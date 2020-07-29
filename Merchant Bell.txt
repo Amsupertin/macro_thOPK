@@ -1,0 +1,47 @@
+automacro checkNpcW {
+	priority 0
+	NpcNotNear /Wanderer/i
+	ConfigKey sellfix 0
+	call usebell
+	timeout 60
+}
+
+automacro checkNpcWx {
+	priority 0
+	NpcNotNear /Wanderer/i
+	call usebell
+	timeout 60
+}
+
+macro usebell {
+	do move 181 61
+	do is Merchant Bell
+}
+
+automacro checkNpcWC {
+	priority 0
+	NpcNear /Wanderer/i
+	call {
+		$ee = $.NpcNearLastPos
+		$px = &arg ("$ee", 1)
+		$py = &arg ("$ee", 2)
+		$pnm = &arg ("$ee", 3)
+		log $pnm $px $py
+		do conf sellAuto 1
+		do conf sellAuto_npc $pnm $px $py
+		do conf sellAuto_npc_steps c r1
+		do conf -f sellfix 1
+	}
+	timeout 60
+}
+
+automacro checkNpcWCX {
+	priority 0
+	NpcNear /Wanderer/i
+	ConfigKey sellfix 1
+	call {
+		do autosell
+		do conf -f sellfix 0
+	}
+}
+
