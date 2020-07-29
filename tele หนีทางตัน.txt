@@ -1,0 +1,20 @@
+automacro checkxy {
+	priority 0
+	map pay_fild08
+	exclusive 0
+	run-once 1
+	call {
+		$px = @arg ("$.pos", 1)
+		$py = @arg ("$.pos", 2)
+		
+		if ($px == 60..80 && $py == 70..90) goto tele
+		
+		:tele
+		log $px $py
+		do tele
+		stop
+		}
+	}
+	release checkxy
+}
+

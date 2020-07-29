@@ -1,0 +1,79 @@
+automacro checkww {
+	priority 0
+	map pay_fild08
+	weight >=48%
+	exclusive 0
+	run-once 1
+	call {
+		do ai manual
+		do move 185 53  ## ตรงไหนก็ได้ มอนไม่ตี ไม่มี npc ยืนอยุ่
+		do is Merchant Bell
+		pause 3
+		do talk @npc(/Wanderer/i)
+		pause 3
+		do talk resp 1
+		pause 2
+		call sellitemmm
+		do sell done
+		do ai on
+	}
+	release checkww
+}
+
+macro checkw {
+	do ai manual
+	do move 185 53  ## ตรงไหนก็ได้ มอนไม่ตี ไม่มี npc ยืนอยุ่
+	do is Merchant Bell
+	pause 3
+	do talk @npc(/Wanderer/i)
+	pause 3
+	do talk resp 1
+	pause 2
+	call sellitemmm
+	do sell done
+	do ai on
+}
+
+macro sellitemmm {
+	$itemIdx01 = @inventory(Apple)
+	$itemIdx02 = @inventory(Fire Arrow)
+	$itemIdx03 = @inventory(Stone)
+	$itemIdx04 = @inventory(Jubilee)
+	$itemIdx05 = @inventory(Sticky Poison)
+	$itemIdx06 = @inventory(Maneater Root)
+	$itemIdx07 = @inventory(Maneater Blossom)
+	$itemIdx08 = @inventory(Mandragora Flowerpot)
+	$itemIdx09 = @inventory(Orange)
+	$itemIdx10 = @inventory(Red Herb)
+
+	if ($itemIdx01 != -1) {
+		do sell $itemIdx01
+	}
+	if ($itemIdx02 != -1) {
+		do sell $itemIdx02
+	}
+	if ($itemIdx03 != -1) {
+		do sell $itemIdx03
+	}
+	if ($itemIdx04 != -1) {
+		do sell $itemIdx04
+	}
+	if ($itemIdx05 != -1) {
+		do sell $itemIdx05
+	}
+	if ($itemIdx06 != -1) {
+		do sell $itemIdx06
+	}
+	if ($itemIdx07 != -1) {
+		do sell $itemIdx07
+	}
+	if ($itemIdx08 != -1) {
+		do sell $itemIdx08
+	}
+	if ($itemIdx09 != -1) {
+		do sell $itemIdx09
+	}		
+	if ($itemIdx10 != -1) {
+		do sell $itemIdx10
+	}
+}
